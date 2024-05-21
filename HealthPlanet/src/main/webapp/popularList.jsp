@@ -1,28 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- static resource ê²½ë¡œ ì§€ì • ë¬¸ì œ ìžˆìŒ 
+<script type="text/javascript" src="js/popularList.js"></script>
+<link type="text/css" rel="stylesheet" href="css/popularList.css" />
+-->
 </head>
+
 <body>
-
-
-<!-- css, jsµî Àû¿ëÇÒ °Ô ¸¹À½// ±¸ÇöÁß -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	<div class="FlipCardcontainer">
+        <div class="slider-container">
+            <span class="slider-leftBtn sliderBtn"></span>	
+            <div class="card-container" id="slider">
+            	<c:forEach var="post" items="${postList}">
+					<a href='<c:url value="/shop/viewProduct.do">
+				          <c:param name="postid" value="${post.postid}"/></c:url>'>
+						<div class="card" onClick="" style="cursor:pointer;">
+							<h5>${post.title}</h5>
+							<p>${post.custid}</p>
+							<p>${post.schedule}</p>
+							<!-- ì°¸ì—¬ìƒíƒœì²´í¬ -->
+							<c:choose>
+								<c:when test="${post.myState}">
+									<a>ì‹ ì²­ì·¨ì†Œ</a>
+								</c:when>
+								<c:otherwise>
+									<a>ì‹ ì²­í•˜ê¸°</a>
+								</c:otherwise>
+							</c:choose>
+						</div>
+					</a>
+				</c:forEach>
+            </div>
+            <span class="slider-rightBtn sliderBtn"></span>
+        </div>
+    </div>
 </body>
 </html>
