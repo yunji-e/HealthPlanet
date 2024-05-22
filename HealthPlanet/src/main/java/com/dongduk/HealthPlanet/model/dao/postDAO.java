@@ -106,7 +106,7 @@ public class postDAO {
     }
 
     // 모임 신청 취소(모임 조회에서 취소)
-    int cancelParticipation(int id, int postid) {
+    public int cancelPost(int id, int postid) {
         StringBuilder query = new StringBuilder();
         query.append("DELETE FROM PARTICIPATE ");
         query.append("WHERE postid = ? AND id = ?; ");
@@ -136,7 +136,7 @@ public class postDAO {
     }
 
     // 찜하기
-    int addWish(int id, int postid) {
+    public int addWish(int id, int postid) {
         StringBuilder query = new StringBuilder();
         query.append("INSERT INTO WISH ");
         query.append("VALUES(?, ?) ");
@@ -167,7 +167,7 @@ public class postDAO {
     }
 
     // 찜 삭제(모임 조회에서 삭제)
-    int deleteWish(int id, int postid) {
+    public int deleteWish(int id, int postid) {
         StringBuilder query = new StringBuilder();
         query.append("DELETE FROM WISH ");
         query.append("WHERE postid = ?, id = ?; ");
