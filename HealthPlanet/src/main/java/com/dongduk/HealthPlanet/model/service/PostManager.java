@@ -45,4 +45,5 @@ public class PostManager {
     public int deleteWish(int id, int postid) throws SQLException {
         return postDAO.deleteWish(id, postid);
     }
+    
 }
