@@ -47,36 +47,6 @@ public class userDAO {
         return null;
     }
 
-    // 모임 신청 취소(참여한 모임 목록에서 취소)
-    int cancelParticipation(int id, int postid) {
-        StringBuilder query = new StringBuilder();
-        query.append("DELETE FROM PARTICIPATE ");
-        query.append("WHERE postid = ? AND id = ?; ");
-
-        jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {postid, id});
-        try {
-            int result = jdbcUtil.executeUpdate();
-            if (result == 1) {
-                StringBuilder query2 = new StringBuilder();
-                query2.append("UPDATE POST SET state = 0 ");
-                query2.append("WHERE postid = ? AND headcount > (SELECT count(*) FROM PARTICIPATE WHERE postid = ?);");
-                jdbcUtil.setSqlAndParameters(query2.toString(), new Object[] {postid, postid});
-
-                result = jdbcUtil.executeUpdate();
-                return result;
-            }
-            return result;
-        } catch (Exception ex){
-            jdbcUtil.rollback();
-            ex.printStackTrace();
-        } finally {
-            jdbcUtil.commit();
-            jdbcUtil.close();
-        }
-
-        return 0;
-    }
-
     // 나의 찜 목록
     public List<Post> findWishList(int id) {
         StringBuilder query = new StringBuilder();
@@ -107,30 +77,6 @@ public class userDAO {
             jdbcUtil.close();
         }
         return null;
-    }
-
-    // 찜 삭제(찜 목록에서 삭제)
-    public int deleteWish(int id, int postid) {
-        StringBuilder query = new StringBuilder();
-        query.append("DELETE FROM WISH ");
-        query.append("WHERE postid = ? AND id = ?; ");
-
-        query.append("UPDATE POST SET wish = wish - 1 ");
-        query.append("WHERE postid = ?, id = ?; ");
-
-        jdbcUtil.setSqlAndParameters(query.toString(), new Object[] {postid, id, postid, id});
-        try {
-            int result = jdbcUtil.executeUpdate();
-            return result;
-        } catch (Exception ex){
-            jdbcUtil.rollback();
-            ex.printStackTrace();
-        } finally {
-            jdbcUtil.commit();
-            jdbcUtil.close();
-        }
-
-        return 0;
     }
 
     // 내 모임 목록 조회
