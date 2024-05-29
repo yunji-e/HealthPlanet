@@ -23,6 +23,9 @@
 		
 		<!-- DBCP2 -->
 		<commons-dbcp2.version>2.9.0</commons-dbcp2.version>
+		
+		<!-- Oracle JDBC -->
+        <oracle.version>21.3.0.0</oracle.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -79,6 +82,13 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>${commons-dbcp2.version}</version>
+        </dependency>
+        
+        <!-- Oracle JDBC -->
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>${oracle.version}</version>
         </dependency>
 	</dependencies>
 
