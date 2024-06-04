@@ -1,13 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-
+<!-- ì´í›„ ìŠ¤íƒ€ì¼ì‹œíŠ¸ë¡œ ë¶„ë¦¬ í•„ìš” -->
 <style type="text/css">
-	.post {
+	.card {
 		display: inline-block;
 		border-radius: 5px;
 		padding: 5px;
@@ -19,38 +20,25 @@
 
 </head>
 <body>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:forEach var="post" items="${postList}">
 	<a href='<c:url value="/shop/viewProduct.do">
           <c:param name="postid" value="${post.postid}"/></c:url>'>
-		<div class="post" onClick="" style="cursor:pointer;">
+		<div class="card" onClick="" style="cursor:pointer;">
 			<h5>${post.title}</h5>
 			<p>${post.custid}</p>
 			<p>${post.schedule}</p>
-			<!-- Âü¿©»óÅÂÃ¼Å© -->
+			<!-- ì°¸ì—¬ìƒíƒœì²´í¬ -->
 			<c:choose>
 				<c:when test="${post.myState}">
-					<a>½ÅÃ»Ãë¼Ò</a>
+					<a>ì‹ ì²­ì·¨ì†Œ</a>
 				</c:when>
 				<c:otherwise>
-					<a>½ÅÃ»ÇÏ±â</a>
+					<a>ì‹ ì²­í•˜ê¸°</a>
 				</c:otherwise>
 			</c:choose>
 		</div>
 	</a>
 </c:forEach>
-
-
-
-
-
-
-
-
-
-
 
 
 
