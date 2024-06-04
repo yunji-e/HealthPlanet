@@ -6,10 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- static resource 경로 지정 문제 있음 
 <script type="text/javascript" src="js/popularList.js"></script>
 <link type="text/css" rel="stylesheet" href="css/popularList.css" />
--->
 </head>
 
 <body>
