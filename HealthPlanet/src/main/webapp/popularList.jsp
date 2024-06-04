@@ -1,6 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +11,10 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="js/popularList.js"></script>
 <link type="text/css" rel="stylesheet" href="css/popularList.css" />
+<!-- static resource 경로 지정 문제 있음 
+<script type="text/javascript" src="js/popularList.js"></script>
+<link type="text/css" rel="stylesheet" href="css/popularList.css" />
+-->
 </head>
 
 <body>
