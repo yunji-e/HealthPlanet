@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="../css/meetingView.css">
+<link rel="stylesheet" href="./css/meetingView.css">
 <title>meetingView</title>
 </head>
 <body>
