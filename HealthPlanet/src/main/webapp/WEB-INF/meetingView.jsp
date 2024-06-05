@@ -20,13 +20,32 @@
             <div class="subheading">인원수 : ${post.headcount}</div>
             <div class="subheading">비용 : ${post.cost}</div>
             <div class="description">설명 : ${post.body}</div>
-
-            <button type="button" id="btn">
-                <div class="div2">수정하기</div>
-            </button>
-            <button type="button" id="btn2">
-                <div class="div2">삭제하기</div>
-            </button>
+            
+            
+            <!-- user가 쓴 게시글이면 수정/삭제 버튼 표시, 아니면 찜/신청 버튼 표시 -->
+            <c:when test="${user.id != null}">
+                <a href="<c:url value='/myPage/postUpdateView'>
+                <c:param name='postId' value='${post.postid}'/></c:url>">
+                <button type="button" id="btn">수정하기</button>
+            </a>
+            <a href="<c:url value='/myPage/deletePost'>
+                <c:param name='postId' value='${post.postid}'/></c:url>">
+                <button type="button" id="btn2">삭제하기</button>
+            </a>
+            </c:when>
+            <c:otherwise>
+                <a href="<c:url value='/post/wish'>
+                <c:param name='postId' value='${post.postid}'/>
+                <c:param name='userId' value='${user.id}'/></c:url>">
+                <button type="button" id="btn">찜하기</button>
+            </a>
+            <a href="<c:url value='/post/participate'>
+                <c:param name='postId' value='${post.postid}'/>
+                <c:param name='userId' value='${user.id}'/></c:url>">
+                <button type="button" id="btn2">신청하기</button>
+            </a>
+            </c:otherwise>
+            
             
         </div>
 
