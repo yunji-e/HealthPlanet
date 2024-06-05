@@ -9,16 +9,16 @@ import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.domain.Post;
 import com.dongduk.HealthPlanet.service.UserManager;
 
-public class ParticipationListController implements Controller {
+public class WishListController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        
+
         UserManager manager = UserManager.getInstance();
         int userId = Integer.parseInt(request.getParameter("id"));
-        
-        List<Post> postList = manager.findParticipationList(userId);    
-        request.setAttribute("postList", postList);  
-        
-        return "/user/participationlist.jsp";                
+
+        List<Post> wishList = manager.findWishList(userId);    
+        request.setAttribute("wishList", wishList);  
+
+        return "/user/wishList.jsp";                
     }
 }

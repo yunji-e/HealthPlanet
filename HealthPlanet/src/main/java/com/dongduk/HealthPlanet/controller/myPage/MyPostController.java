@@ -1,7 +1,5 @@
 package com.dongduk.HealthPlanet.controller.myPage;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,16 +7,17 @@ import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.domain.Post;
 import com.dongduk.HealthPlanet.service.UserManager;
 
-public class ParticipationListController implements Controller {
+public class MyPostController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
         
         UserManager manager = UserManager.getInstance();
         int userId = Integer.parseInt(request.getParameter("id"));
+        int postId = Integer.parseInt(request.getParameter("postid"));
         
-        List<Post> postList = manager.findParticipationList(userId);    
-        request.setAttribute("postList", postList);  
+        Post myPost = manager.findMyPost(userId, postId);    
+        request.setAttribute("myPost", myPost);  
         
-        return "/user/participationlist.jsp";                
+        return "/user/myPost.jsp";                
     }
 }
