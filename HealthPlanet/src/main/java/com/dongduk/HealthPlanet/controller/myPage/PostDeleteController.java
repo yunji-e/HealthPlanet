@@ -1,24 +1,22 @@
 package com.dongduk.HealthPlanet.controller.myPage;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dongduk.HealthPlanet.controller.Controller;
-import com.dongduk.HealthPlanet.domain.Post;
 import com.dongduk.HealthPlanet.service.UserManager;
 
-public class myPostListController implements Controller {
+public class PostDeleteController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
         
         UserManager manager = UserManager.getInstance();
-        int userId = Integer.parseInt(request.getParameter("id"));
+        int postId = Integer.parseInt(request.getParameter("postid"));
         
-        List<Post> myPostList = manager.findMyPostList(userId);    
-        request.setAttribute("myPostList", myPostList);  
-        
-        return "/user/myPostList.jsp";                
+        int result = manager.deletePost(postId);    
+        if (result == 1)
+            return "redirect:/myPage/delete";
+        else
+            return "/user/myPost.jsp";               
     }
 }

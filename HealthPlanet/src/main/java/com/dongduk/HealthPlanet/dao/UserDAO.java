@@ -7,11 +7,11 @@ import java.util.List;
 
 import com.dongduk.HealthPlanet.domain.Post;
 
-public class userDAO {
+public class UserDAO {
 
     private JDBCUtil jdbcUtil = null;
 
-    public userDAO() {
+    public UserDAO() {
         jdbcUtil = new JDBCUtil();
     };
 

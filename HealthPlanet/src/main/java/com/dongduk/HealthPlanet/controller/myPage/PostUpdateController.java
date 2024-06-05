@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.service.UserManager;
 
-public class postUpdateController implements Controller {
+public class PostUpdateController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");

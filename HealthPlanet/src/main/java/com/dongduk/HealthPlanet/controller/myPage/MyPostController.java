@@ -7,16 +7,17 @@ import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.domain.Post;
 import com.dongduk.HealthPlanet.service.UserManager;
 
-public class postUpdateViewController implements Controller {
+public class MyPostController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
         
         UserManager manager = UserManager.getInstance();
-        int postId = Integer.parseInt(request.getParameter("postId"));
+        int userId = Integer.parseInt(request.getParameter("id"));
+        int postId = Integer.parseInt(request.getParameter("postid"));
         
-        Post myPost = manager.findUpdatePost(postId);    
+        Post myPost = manager.findMyPost(userId, postId);    
         request.setAttribute("myPost", myPost);  
         
-        return "/user/updateMyPost.jsp";                
+        return "/user/myPost.jsp";                
     }
 }

@@ -4,16 +4,16 @@ import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import com.dongduk.HealthPlanet.dao.userDAO;
+import com.dongduk.HealthPlanet.dao.UserDAO;
 import com.dongduk.HealthPlanet.domain.*;
 
 public class UserManager {
 	private static UserManager userMan = new UserManager();
-	private userDAO userDAO;
+	private UserDAO userDAO;
 
 	private UserManager() {
 		try {
-			userDAO = new userDAO();
+			userDAO = new UserDAO();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}			

@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.service.PostManager;
 
-public class addWishController implements Controller {
+public class AddWishController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
         

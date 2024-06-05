@@ -2,16 +2,16 @@ package com.dongduk.HealthPlanet.service;
 
 import java.sql.SQLException;
 
-import com.dongduk.HealthPlanet.dao.postDAO;
+import com.dongduk.HealthPlanet.dao.PostDAO;
 import com.dongduk.HealthPlanet.domain.Post;
 
 public class PostManager {
     private static PostManager postMan = new PostManager();
-    private postDAO postDAO;
+    private PostDAO postDAO;
     
     private PostManager() {
         try {
-            postDAO = new postDAO();
+            postDAO = new PostDAO();
         } catch (Exception e) {
             e.printStackTrace();
         }

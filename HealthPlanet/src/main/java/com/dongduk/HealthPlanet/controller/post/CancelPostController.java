@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.service.PostManager;
 
-public class deleteWishController implements Controller {
+public class CancelPostController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
         
@@ -14,7 +14,7 @@ public class deleteWishController implements Controller {
         int userId = Integer.parseInt(request.getParameter("id"));
         int postId = Integer.parseInt(request.getParameter("postid"));
         
-        manager.deleteWish(userId, postId);    
+        manager.cancelPost(userId, postId);    
         return "redirect:/post/view";
     }
 }

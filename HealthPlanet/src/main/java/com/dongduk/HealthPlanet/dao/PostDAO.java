@@ -6,11 +6,11 @@ import java.util.Date;
 
 import com.dongduk.HealthPlanet.domain.Post;
 
-public class postDAO {
+public class PostDAO {
 
     private JDBCUtil jdbcUtil = null;
 
-    public postDAO() {
+    public PostDAO() {
         jdbcUtil = new JDBCUtil();
     };
 
