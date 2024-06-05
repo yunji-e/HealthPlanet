@@ -1,4 +1,4 @@
-package com.dongduk.HealthPlanet.model;
+package com.dongduk.HealthPlanet.domain;
 
 public class SportsCategory {
     private int sportid;

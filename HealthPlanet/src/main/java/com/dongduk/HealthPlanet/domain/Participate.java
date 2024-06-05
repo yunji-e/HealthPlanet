@@ -1,4 +1,4 @@
-package com.dongduk.HealthPlanet.model;
+package com.dongduk.HealthPlanet.domain;
 
 public class Participate {
     private int postid;

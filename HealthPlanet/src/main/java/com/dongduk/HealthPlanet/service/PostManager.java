@@ -1,9 +1,9 @@
-package com.dongduk.HealthPlanet.model.service;
+package com.dongduk.HealthPlanet.service;
 
 import java.sql.SQLException;
 
-import com.dongduk.HealthPlanet.model.Post;
-import com.dongduk.HealthPlanet.model.dao.postDAO;
+import com.dongduk.HealthPlanet.dao.postDAO;
+import com.dongduk.HealthPlanet.domain.Post;
 
 public class PostManager {
     private static PostManager postMan = new PostManager();

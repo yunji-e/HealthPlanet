@@ -1,4 +1,4 @@
-package com.dongduk.HealthPlanet.model.dao;
+package com.dongduk.HealthPlanet.dao;
 
 import java.io.IOException;
 import java.io.InputStream;

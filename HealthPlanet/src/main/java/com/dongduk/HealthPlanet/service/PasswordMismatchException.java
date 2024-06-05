@@ -1,4 +1,4 @@
-package com.dongduk.HealthPlanet.model.service;
+package com.dongduk.HealthPlanet.service;
 
 public class PasswordMismatchException extends Exception {
 	private static final long serialVersionUID = 1L;

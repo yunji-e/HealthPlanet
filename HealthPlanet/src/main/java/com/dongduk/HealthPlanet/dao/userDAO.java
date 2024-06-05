@@ -1,11 +1,11 @@
-package com.dongduk.HealthPlanet.model.dao;
+package com.dongduk.HealthPlanet.dao;
 
 import java.util.Date;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.dongduk.HealthPlanet.model.*;
+import com.dongduk.HealthPlanet.domain.Post;
 
 public class userDAO {
 

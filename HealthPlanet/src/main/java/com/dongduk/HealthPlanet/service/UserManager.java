@@ -1,11 +1,11 @@
-package com.dongduk.HealthPlanet.model.service;
+package com.dongduk.HealthPlanet.service;
 
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
 
-import com.dongduk.HealthPlanet.model.*;
-import com.dongduk.HealthPlanet.model.dao.userDAO;
+import com.dongduk.HealthPlanet.dao.userDAO;
+import com.dongduk.HealthPlanet.domain.*;
 
 public class UserManager {
 	private static UserManager userMan = new UserManager();

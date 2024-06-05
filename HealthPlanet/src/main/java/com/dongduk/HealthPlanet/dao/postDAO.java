@@ -1,9 +1,10 @@
-package com.dongduk.HealthPlanet.model.dao;
+package com.dongduk.HealthPlanet.dao;
 
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.Date;
 
-import com.dongduk.HealthPlanet.model.Post;
+import com.dongduk.HealthPlanet.domain.Post;
 
 public class postDAO {
 
@@ -25,7 +26,7 @@ public class postDAO {
 
             if(rs.next()) {
                 String title = rs.getString("title");
-                Date schedule = rs.getDate("schedule");
+                Date schedule = rs.getDate("schedule"); 
                 String time = rs.getString("timezone");
                 String place = rs.getString("place");
                 int headcount = rs.getInt("headcount");
