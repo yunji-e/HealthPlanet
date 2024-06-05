@@ -4,8 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.dongduk.HealthPlanet.controller.Controller;
-import com.dongduk.HealthPlanet.model.Post;
-import com.dongduk.HealthPlanet.model.service.UserManager;
+import com.dongduk.HealthPlanet.domain.Post;
+import com.dongduk.HealthPlanet.service.UserManager;
 
 public class myPostController implements Controller {
     @Override
