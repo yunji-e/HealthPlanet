@@ -24,7 +24,7 @@
             
             <!-- user가 쓴 게시글이면 수정/삭제 버튼 표시, 아니면 찜/신청 버튼 표시 -->
             <div th:if="${user.id}">
-                <a href="#" th:href="@{/myPage/postUpdateView}"
+                <a href="#" th:href="@{/myPage/updatePost}"
                 <c:param name='postId' value='${post.postid}'/>>
                 <button type="button" id="btn">수정하기</button>
             </a>
