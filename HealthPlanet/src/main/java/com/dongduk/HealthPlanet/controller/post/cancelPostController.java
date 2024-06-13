@@ -1,20 +1,26 @@
 package com.dongduk.HealthPlanet.controller.post;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dongduk.HealthPlanet.controller.Controller;
-import com.dongduk.HealthPlanet.model.service.PostManager;
+import com.dongduk.HealthPlanet.model.dao.jpa.JpaPostDao;
 
-public class cancelPostController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        
-        PostManager manager = PostManager.getInstance();
-        int userId = Integer.parseInt(request.getParameter("id"));
-        int postId = Integer.parseInt(request.getParameter("postid"));
-        
-        manager.cancelPost(userId, postId);    
-        return "redirect:/post/view";
+@Controller
+public class cancelPostController {
+    
+    @Autowired
+    private JpaPostDao jpaPostDao;
+
+    @RequestMapping("post/cancelPost")    
+    public String handleRequest(
+            @RequestParam("id") int id,
+            @RequestParam("postid") int postid,
+            ModelMap model) throws Exception {
+        jpaPostDao.cancelPost(id, postid);    
+        return "redirect:/view"; 
     }
+   
 }

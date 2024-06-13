@@ -1,22 +1,27 @@
 package com.dongduk.HealthPlanet.controller.post;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.model.Post;
-import com.dongduk.HealthPlanet.model.service.PostManager;
+import com.dongduk.HealthPlanet.model.dao.jpa.JpaPostDao;
 
-public class postController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        
-        PostManager manager = PostManager.getInstance();
-        int postId = Integer.parseInt(request.getParameter("postid"));
-        
-        Post post = manager.findPost(postId);    
-        request.setAttribute("post", post);  
-        
-        return "/post/view.jsp";                
+@Controller
+public class postController {
+    
+    @Autowired
+    private JpaPostDao jpaPostDao;
+
+    @RequestMapping({"/post/view", "/search/post"})    
+    public String handleRequest(
+            @RequestParam("postid") int postid,
+            ModelMap model) throws Exception {
+        Post post = jpaPostDao.findPost(postid);    
+        model.addAttribute("post", post);
+        return "meetingView"; 
     }
+    
 }

@@ -1,22 +1,27 @@
 package com.dongduk.HealthPlanet.controller.myPage;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.model.Post;
-import com.dongduk.HealthPlanet.model.service.UserManager;
+import com.dongduk.HealthPlanet.model.dao.jpa.JpaUserDao;
 
-public class postUpdateViewController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        
-        UserManager manager = UserManager.getInstance();
-        int postId = Integer.parseInt(request.getParameter("postId"));
-        
-        Post myPost = manager.findUpdatePost(postId);    
-        request.setAttribute("myPost", myPost);  
-        
-        return "/user/updateMyPost.jsp";                
+@Controller
+public class postUpdateViewController {
+    
+    @Autowired
+    private JpaUserDao jpaUserDao;
+
+    @RequestMapping("/myPage/postUpdateView")    
+    public String handleRequest(
+            @RequestParam("postid") int postid,
+            ModelMap model) throws Exception {
+        Post post = jpaUserDao.findUpdatePost(postid);    
+        model.addAttribute("post", post);
+        return "updateMyPost"; 
     }
+    
 }
