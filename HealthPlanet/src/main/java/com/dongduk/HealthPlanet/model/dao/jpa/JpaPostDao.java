@@ -85,5 +85,5 @@ public class JpaPostDao {
         query.setParameter(1, postid);
         return query.executeUpdate();
     }
-
+    
 }

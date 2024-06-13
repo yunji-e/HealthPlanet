@@ -90,4 +90,5 @@ public class JpaUserDao implements UserDao {
         Post post = em.find(Post.class, postid);
         em.remove(post);
     }
+    
 }
