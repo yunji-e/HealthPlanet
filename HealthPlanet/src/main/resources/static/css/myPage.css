@@ -41,7 +41,10 @@
   font-weight: 600;
   align-self: stretch;
 }
-button {
+.div3 {
+	color: white;
+}
+.button {
   background: #000000;
   border-radius: 8px;
   padding: 14px 30px;
