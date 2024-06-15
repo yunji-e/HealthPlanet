@@ -24,5 +24,5 @@ public class myPostController {
         model.addAttribute("post", post);
         return "meetingView"; 
     }
-                       
+                      
 }
