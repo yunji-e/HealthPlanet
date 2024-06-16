@@ -1,6 +1,25 @@
 package com.dongduk.HealthPlanet.domain;
 
-public class User {
+import java.io.Serializable;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name="customer")
+@Getter @Setter
+public class User implements Serializable {
+    @Id
+    @SequenceGenerator(name="USER_SEQ_GENERATOR",
+    sequenceName="USER_SEQUENCE", initialValue=100, allocationSize=10)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,
+    generator="USER_SEQ_GENERATOR")
     private int id;
     private String custid;
     private String custpw;
@@ -18,45 +37,4 @@ public class User {
         this.phone = phone;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getCustid() {
-        return custid;
-    }
-
-    public void setCustid(String custid) {
-        this.custid = custid;
-    }
-
-    public String getCustpw() {
-        return custpw;
-    }
-
-    public void setCustpw(String custpw) {
-        this.custpw = custpw;
-    }
-
-    public String getCustname() {
-        return custname;
-    }
-
-    public void setCustname(String custname) {
-        this.custname = custname;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-    
-    
 }
