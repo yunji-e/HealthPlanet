@@ -1,6 +1,16 @@
 package com.dongduk.HealthPlanet.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name="sportscategory")
+@Getter @Setter
 public class SportsCategory {
+    @Id
     private int sportid;
     private String sportname;
     private String description;
@@ -14,22 +24,4 @@ public class SportsCategory {
         this.description = description;
     }
     
-    public int getSportid() {
-        return sportid;
-    }
-    public void setSportid(int sportid) {
-        this.sportid = sportid;
-    }
-    public String getSportname() {
-        return sportname;
-    }
-    public void setSportname(String sportname) {
-        this.sportname = sportname;
-    }
-    public String getDescription() {
-        return description;
-    }
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

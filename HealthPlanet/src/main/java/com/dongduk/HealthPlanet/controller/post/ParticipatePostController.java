@@ -1,20 +1,24 @@
 package com.dongduk.HealthPlanet.controller.post;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dongduk.HealthPlanet.controller.Controller;
-import com.dongduk.HealthPlanet.service.PostManager;
+import com.dongduk.HealthPlanet.dao.jpa.JpaPostDao;
 
-public class ParticipatePostController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        
-        PostManager manager = PostManager.getInstance();
-        int userId = Integer.parseInt(request.getParameter("id"));
-        int postId = Integer.parseInt(request.getParameter("postid"));
-        
-        manager.participatePost(userId, postId);    
-        return "redirect:/post/view";
+@Controller
+public class ParticipatePostController {
+    
+    @Autowired
+    private JpaPostDao jpaPostDao;
+
+    @RequestMapping("/post/participate")    
+    public String handleRequest(
+            @RequestParam("id") int id,
+            @RequestParam("postid") int postid) throws Exception {
+        jpaPostDao.participatePost(id, postid);    
+        return "redirect:/view"; 
     }
+
 }

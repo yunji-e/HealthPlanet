@@ -1,22 +1,24 @@
 package com.dongduk.HealthPlanet.controller.myPage;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dongduk.HealthPlanet.controller.Controller;
-import com.dongduk.HealthPlanet.service.UserManager;
+import com.dongduk.HealthPlanet.dao.jpa.JpaUserDao;
 
-public class PostDeleteController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        
-        UserManager manager = UserManager.getInstance();
-        int postId = Integer.parseInt(request.getParameter("postid"));
-        
-        int result = manager.deletePost(postId);    
-        if (result == 1)
-            return "redirect:/myPage/delete";
-        else
-            return "/user/myPost.jsp";               
+@Controller
+public class PostDeleteController {
+    
+    @Autowired
+    private JpaUserDao jpaUserDao;
+
+    @RequestMapping("/myPage/deletePost")    
+    public String handleRequest(
+            @RequestParam("id") int id,
+            @RequestParam("postid") int postid) throws Exception {
+        jpaUserDao.deletePost(postid);    
+        return "redirect:/myPage/deletePost"; 
     }
+
 }
