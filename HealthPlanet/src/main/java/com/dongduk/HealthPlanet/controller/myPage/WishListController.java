@@ -2,23 +2,28 @@ package com.dongduk.HealthPlanet.controller.myPage;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.dongduk.HealthPlanet.controller.Controller;
 import com.dongduk.HealthPlanet.domain.Post;
-import com.dongduk.HealthPlanet.service.UserManager;
+import com.dongduk.HealthPlanet.dao.jpa.JpaUserDao;
 
-public class WishListController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
+@Controller
+public class WishListController {
+    
+    @Autowired
+    private JpaUserDao jpaUserDao;
 
-        UserManager manager = UserManager.getInstance();
-        int userId = Integer.parseInt(request.getParameter("id"));
-
-        List<Post> wishList = manager.findWishList(userId);    
-        request.setAttribute("wishList", wishList);  
-
-        return "/user/wishList.jsp";                
+    @RequestMapping("/myPage/wishList")    
+    public String handleRequest(
+            @RequestParam("id") int id,
+            ModelMap model) throws Exception {
+        List<Post> list = jpaUserDao.findWishList(id); 
+        model.addAttribute("list", list);
+        return "wishList"; 
     }
+
 }

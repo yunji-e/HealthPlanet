@@ -1,34 +1,39 @@
 package com.dongduk.HealthPlanet.controller.myPage;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.dongduk.HealthPlanet.domain.Post;
+import com.dongduk.HealthPlanet.dao.jpa.JpaUserDao;
 
-import com.dongduk.HealthPlanet.controller.Controller;
-import com.dongduk.HealthPlanet.service.UserManager;
-
-public class PostUpdateController implements Controller {
-    @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {          
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        
-        UserManager manager = UserManager.getInstance();
-        int postId = Integer.parseInt(request.getParameter("postId"));
-        String title = request.getParameter("title");
-        Date schedule = format.parse(request.getParameter("schedule"));
-        String time = request.getParameter("time");
-        String place = request.getParameter("place");
-        int headcount = Integer.parseInt(request.getParameter("headcount"));
-        int cost = Integer.parseInt(request.getParameter("cost"));
-        String body = request.getParameter("body");
-        String sportname = request.getParameter("sportname");
-        
-        int result = manager.updatePost(postId, title, schedule, time, place, headcount, cost, body, sportname);    
-        if (result == 1)
-            return "redirect:/myPage/update";
-        else
-            return "/user/myPost.jsp";
+@Controller
+public class PostUpdateController {
+    
+    @Autowired
+    private JpaUserDao jpaUserDao;
+    
+    // 수정하기 버튼 눌러서 수정페이지로 이동
+    @GetMapping("/myPage/updatePost")    
+    public String handleRequest(
+            @RequestParam("postid") int postid,
+            ModelMap model) throws Exception {
+        Post post = jpaUserDao.findUpdatePost(postid);    
+        model.addAttribute("post", post);
+        return "updateMyPost"; 
     }
+    
+    // 수정페이지에서 수정완료 버튼 눌렀을 때
+    @PostMapping("/myPage/updatePost")    
+    public String handleRequest(
+            @RequestParam("postid") int postid,
+            @ModelAttribute("post") Post post) throws Exception {
+        jpaUserDao.UpdatePost(post);   
+        return "redirect:/myPage/updatePost";
+    }
+
 }

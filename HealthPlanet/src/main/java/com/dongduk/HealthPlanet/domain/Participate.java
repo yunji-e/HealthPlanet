@@ -1,7 +1,18 @@
 package com.dongduk.HealthPlanet.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name="participate")
+@Getter @Setter
 public class Participate {
+    @Id
     private int postid;
+    @Id
     private int id;
     private int state;
     
@@ -14,29 +25,4 @@ public class Participate {
         this.state = state;
     }
 
-    public int getPostid() {
-        return postid;
-    }
-
-    public void setPostid(int postid) {
-        this.postid = postid;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getState() {
-        return state;
-    }
-
-    public void setState(int state) {
-        this.state = state;
-    }
-    
-    
 }
