@@ -1,9 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -21,28 +17,12 @@
 
 </head>
 <body>
-<c:forEach var="post" items="${popularList}">
-    <a href='<c:url value="/shop/viewProduct.do">
-          <c:param name="postid" value="${post.postid}"/></c:url>'>
-        <div class="card" onClick="" style="cursor:pointer;">
-            <h5>${post.title}</h5>
-            <p>${post.custid}</p>
-            <p>${post.schedule}</p>
-            <!-- 참여상태체크 -->
-            <c:choose>
-                <c:when test="${post.myState}">
-                    <a>신청취소</a>
-                </c:when>
-                <c:otherwise>
-                    <a>신청하기</a>
-                </c:otherwise>
-            </c:choose>
-        </div>
-    </a>
-</c:forEach>
-
-
-
-
+	<div th:each="post:${popularList}" 
+			class="card" style="cursor:pointer"
+			onClick="location.href='@{/post/view/{post.postid}}';">
+		<h5 th:text="${post.title}">제목</h5>
+		<p th:text="${post.custid}">작성자</p>
+		<p th:text="${post.schedule}">일자</p>
+	</div>
 </body>
 </html>
