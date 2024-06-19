@@ -23,7 +23,7 @@ public class PopularPostController {
             Model model) throws Exception {
         List<Post> popularList = jpaPostPreviewDao.findPopularPreviewList(sort, 100);
         model.addAttribute(popularList);
-        return "list";
+        return "popularList";
     }   
  
     @RequestMapping({"/popular/preview"})
@@ -32,6 +32,6 @@ public class PopularPostController {
             Model model) throws Exception {
         List<Post> popularPreviewList = jpaPostPreviewDao.findPopularPreviewList(sort, 10);
         model.addAttribute(popularPreviewList);
-        return "preview";
+        return "popularPreviewList";
     }
 }
