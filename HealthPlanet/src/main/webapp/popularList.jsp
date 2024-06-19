@@ -17,16 +17,16 @@
         <div class="slider-container">
             <span class="slider-leftBtn sliderBtn"></span>  
             <div class="card-container" id="slider">
-                <c:forEach var="post" items="${postList}">
+                <c:forEach var="preview" items="${popularPreviewList}">
                     <a href='<c:url value="/shop/viewProduct.do">
-                          <c:param name="postid" value="${post.postid}"/></c:url>'>
+                          <c:param name="postid" value="${preview.postid}"/></c:url>'>
                         <div class="card" onClick="" style="cursor:pointer;">
-                            <h5>${post.title}</h5>
-                            <p>${post.custid}</p>
-                            <p>${post.schedule}</p>
+                            <h5>${preview.title}</h5>
+                            <p>${preview.custid}</p>
+                            <p>${preview.schedule}</p>
                             <!-- 참여상태체크 -->
                             <c:choose>
-                                <c:when test="${post.myState}">
+                                <c:when test="${preview.myState}">
                                     <a>신청취소</a>
                                 </c:when>
                                 <c:otherwise>

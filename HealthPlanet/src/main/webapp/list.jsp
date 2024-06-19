@@ -21,7 +21,7 @@
 
 </head>
 <body>
-<c:forEach var="post" items="${postList}">
+<c:forEach var="post" items="${popularList}">
     <a href='<c:url value="/shop/viewProduct.do">
           <c:param name="postid" value="${post.postid}"/></c:url>'>
         <div class="card" onClick="" style="cursor:pointer;">
