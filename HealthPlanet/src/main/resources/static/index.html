@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Insert</title>
+    <title>Health Planet</title>
     <style>
     	.title {
     		font-size: 300%;
@@ -17,9 +17,10 @@
 		<p class="subTitle">당신의 운동 모임 서비스</p>
 	</div>
 	
-	실시간 인기 모임 card (popularPreviewList) 삽입
+	<p>실시간 인기 모임</p>
+	<div th:replace="~{popularList :: flipCards}"></div>
 	
-	전체 글 view (뭐지이건) 삽입
+	<p>전체 글 view(안만든 것 같음)</p>
 	
 </body>
 </html>
