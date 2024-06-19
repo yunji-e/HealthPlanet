@@ -17,78 +17,73 @@ import jakarta.transaction.Transactional;
 
 @Repository
 public class JpaUserDao implements UserDao {
-    
+
     @PersistenceContext
     private EntityManager em;
-    
+
     // 내가 참여한 모임 목록 조회
+    @Override
     public List<Post> findParticipationList(int id) throws DataAccessException {
-        TypedQuery<Post> query = em.createQuery("SELECT po.postid, title, schedule, po.state, custid "
-                + "FROM CUSTOMER c, POST po, PARTICIPATE pa "
-                + "WHERE c.id = pa.id AND po.postid = pa.postid AND c.id = ?1"
-                + "ORDER BY state ASC, schedule DESC", Post.class);
-        query.setParameter(1, id);
-        List<Post> postList = query.getResultList();
-        return postList;
+        TypedQuery<Post> query = em.createQuery("SELECT po FROM Post po JOIN Participate pa ON po.postid = pa.postid WHERE pa.id = :id ORDER BY po.state ASC, po.schedule DESC", Post.class);
+        query.setParameter("id", id);
+        return query.getResultList();
     }
 
     // 나의 찜 목록
+    @Override
     public List<Post> findWishList(int id) throws DataAccessException {
-        TypedQuery<Post> query = em.createQuery("SELECT po.postid, title, schedule, po.state, custid "
-                + "FROM CUSTOMER c, POST po, WISH w "
-                + "WHERE c.id = w.id AND po.postid = w.postid AND c.id = ?1"
-                + "ORDER BY state ASC, schedule DESC", Post.class);
-        query.setParameter(1, id);
-        List<Post> postList = query.getResultList();
-        return postList;
+        TypedQuery<Post> query = em.createQuery("SELECT po FROM Post po JOIN Wish w ON po.postid = w.postid WHERE w.id = :id ORDER BY po.state ASC, po.schedule DESC", Post.class);
+        query.setParameter("id", id);
+        return query.getResultList();
     }
-    
+
     // 내 모임 목록 조회
+    @Override
     public List<Post> findMyPostList(int id) throws DataAccessException {
-        TypedQuery<Post> query = em.createQuery("SELECT postid, title, schedule, custid "
-                + "FROM CUSTOMER JOIN POST USING(id) "
-                + "WHERE id = ?1 "
-                + "ORDER BY state ASC, schedule DESC", Post.class);
-        query.setParameter(1, id);
-        List<Post> postList = query.getResultList();
-        return postList;
+        TypedQuery<Post> query = em.createQuery("SELECT po FROM Post po WHERE po.custid = :id ORDER BY po.state ASC, po.schedule DESC", Post.class);
+        query.setParameter("id", id);
+        return query.getResultList();
     }
-    
+
     // 내 모임 조회
+    @Override
     @Transactional
     public Post findMyPost(int id, int postid) throws DataAccessException {
-        TypedQuery<Post> query = em.createQuery("SELECT * FROM CUSTOMER JOIN POST USING(id) "
-                + "WHERE id = ?1 AND postid = ?2", Post.class);
-        query.setParameter(1, id);
-        query.setParameter(2, postid);
-        Post post = (Post) query.getSingleResult();
-        
-        Query query2 = em.createQuery("SELECT count(*) AS applicant FROM PARTICIPATE "
-                + "WHERE postid = ?1 AND state = 1");
-        query2.setParameter(1, postid);
-        int applicant = (int) query2.getSingleResult();
-        post.setApplicant(applicant);
-        
+        TypedQuery<Post> query = em.createQuery("SELECT po FROM Post po WHERE po.custid = :id AND po.postid = :postid", Post.class);
+        query.setParameter("id", id);
+        query.setParameter("postid", postid);
+        Post post = query.getSingleResult();
+
+        Query query2 = em.createQuery("SELECT count(p) FROM Participate p WHERE p.postid = :postid AND p.state = 1");
+        query2.setParameter("postid", postid);
+        long applicant = (long) query2.getSingleResult();
+        post.setApplicant((int) applicant);
+
         SportsCategory sc = em.find(SportsCategory.class, post.getEvent());
         post.setSportname(sc.getSportname());
-        
+
         return post;
     }
-    
+
     // 내 모임 수정(수정하기 버튼 -> 수정페이지)
+    @Override
     public Post findUpdatePost(int postid) throws DataAccessException {
         return em.find(Post.class, postid);
     }
-    
+
     // 내 모임 수정(수정페이지 -> 수정완료)
+    @Override
     public void UpdatePost(Post post) throws DataAccessException {
         em.merge(post);
     }
-    
+
     // 내 모임 삭제
+    @Override
     public void deletePost(int postid) throws DataAccessException {
         Post post = em.find(Post.class, postid);
-        em.remove(post);
+        if (post != null) {
+            em.remove(post);
+        }
     }
-    
 }
+
