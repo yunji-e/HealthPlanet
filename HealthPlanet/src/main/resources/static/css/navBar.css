@@ -1,0 +1,37 @@
+body {
+    background-color: white;
+    color: black;
+    font-family: Arial, sans-serif; 
+    margin: 0;
+    padding: 0;
+}
+
+.top {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    padding: 10px;
+}
+
+.top td {
+    vertical-align: middle;
+}
+
+.top td:first-child {
+    font-weight: bold; 
+    font-size: 28px; 
+}
+
+.top td:last-child {
+    text-align: right;
+}
+
+.top a {
+    color: black; 
+    text-decoration: none; 
+    margin-left: 10px; 
+}
+
+.top a:hover {
+    text-decoration: underline; 
+}
