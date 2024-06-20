@@ -21,6 +21,6 @@ public class PopularPostController {
     public String handleRequest(Model model) throws Exception {
         List<Post> popularList = jpaPostPreviewDao.findPopularPreviewList("wish", 100);
         model.addAttribute("popularList", popularList);
-        return "popularPreviewList";
+        return "popularList";
     }   
 }
