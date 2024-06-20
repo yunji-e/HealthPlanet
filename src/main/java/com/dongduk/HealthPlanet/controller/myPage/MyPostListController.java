@@ -19,10 +19,19 @@ public class MyPostListController {
 
     @RequestMapping("/myPage/myPostList")    
     public String handleRequest(
-            @RequestParam("id") int id,
+            @RequestParam("userId") int id,
             ModelMap model) throws Exception {
-        List<Post> list = jpaUserDao.findMyPostList(id);    
-        model.addAttribute("list", list);
+        List<Post> list = jpaUserDao.findMyPostList(id);
+        System.out.println("aaaaa"+list);
+        
+     // 리스트가 null이거나 비어 있는 경우 처리
+        if (list == null || list.isEmpty()) {
+            System.out.println("bbbbb"+list);
+            model.addAttribute("message", "작성한 모임이 없습니다.");
+        } else {
+            System.out.println("ccccc"+list);
+            model.addAttribute("list", list);
+        }
         return "myPostList";
     }
 

@@ -56,4 +56,13 @@ public class Post implements Serializable {
     
     public Post() {}
 
+    public Post(int postid, String title, Date schedule, int state, String custid) {
+        super();
+        this.postid = postid;
+        this.title = title;
+        this.schedule = schedule;
+        this.state = state;
+        this.custid = custid;
+    }
+
 }
