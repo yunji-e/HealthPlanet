@@ -21,6 +21,10 @@ import lombok.Setter;
 @Table(name="post")
 @Getter @Setter
 public class Post implements Serializable {
+    /**
+     * 
+     */
+    private static final long serialVersionUID = 1L;
     @Id
     @SequenceGenerator(name="POST_SEQ_GENERATOR",
     sequenceName="POST_SEQUENCE", initialValue=100, allocationSize=10)
@@ -35,7 +39,7 @@ public class Post implements Serializable {
     private int headcount;
     private int cost;
     private String body;
-    @Column(name="viewCount")
+    @Column(name="viewcount")
     private int view;
     private int wish;
     private int state;

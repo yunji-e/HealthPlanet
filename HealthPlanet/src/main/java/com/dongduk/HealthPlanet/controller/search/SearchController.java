@@ -24,16 +24,16 @@ public class SearchController {
 
     @GetMapping("/meetings/results")
     public String searchMeetings(
-            @RequestParam("meetingEvent") String meetingEvent,
-            @RequestParam("meetingCity") String meetingCity,
-            @RequestParam("meetingCounty") String meetingCounty,
+            @RequestParam("meetingEvent") int meetingEvent,
             @RequestParam("meetingTime") String meetingTime,
-            @RequestParam("headCount") String headCount,
-            @RequestParam("price") String price,
+            @RequestParam("headCount") int headCount,
+            @RequestParam("price") int price,
             Model model) {
         
-        List<Post> meetings = meetingService.searchMeetings(meetingEvent, meetingCity, meetingCounty, meetingTime, headCount, price);
+        List<Post> meetings = meetingService.searchMeetings(meetingEvent, meetingTime, headCount, price);
         model.addAttribute("meetings", meetings);
-        return "meetingSearch";
+        return "meetingResults"; // 검색 결과를 보여줄 뷰의 이름을 수정
     }
 }
+
+

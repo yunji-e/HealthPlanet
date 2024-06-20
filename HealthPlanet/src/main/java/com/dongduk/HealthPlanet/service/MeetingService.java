@@ -14,7 +14,7 @@ public class MeetingService {
     @Autowired
     private PostRepository postRepository;
 
-    public List<Post> searchMeetings(String meetingEvent, String meetingCity, String meetingCounty, String meetingTime, String headCount, String price) {
-        return postRepository.findMeetings(meetingEvent, meetingCity, meetingCounty, meetingTime, headCount, price);
+    public List<Post> searchMeetings(int event, String time, int headcount, int cost) {
+        return postRepository.findMeetings(event, time, headcount, cost);
     }
 }
