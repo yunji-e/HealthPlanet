@@ -1,43 +1,30 @@
 package com.dongduk.HealthPlanet.controller.meeting;
 
-import com.dongduk.HealthPlanet.entities.Meeting;
-import com.dongduk.HealthPlanet.repositories.MeetingRepository;
-
-import jakarta.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.dongduk.HealthPlanet.service.MeetingService;
+import com.dongduk.HealthPlanet.domain.Post;
+
+import java.util.List;
 
 @Controller
-@RequestMapping("/meetings")
 public class MeetingController {
 
-    private final MeetingRepository meetingRepository;
-
     @Autowired
-    public MeetingController(MeetingRepository meetingRepository) {
-        this.meetingRepository = meetingRepository;
-    }
+    private MeetingService meetingService;
 
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("meeting", new Meeting());
-        return "register-meeting";
-    }
-
-    @PostMapping("/register")
-    @Transactional
-    public String registerMeeting(@ModelAttribute Meeting meeting, Model model) {
-        meetingRepository.save(meeting); // Meeting 객체를 저장
-        model.addAttribute("meeting", meeting);
-        return "register-confirm";
-    }
-
-    
-    @GetMapping("/register-finish")
-    public String showRegisterFinishPage() {
-        return "register-finish";
+    @GetMapping("/searchMeetings")
+    public ModelAndView searchMeetings(@RequestParam int event,
+                                       @RequestParam String time,
+                                       @RequestParam int headcount,
+                                       @RequestParam int cost) {
+        List<Post> meetings = meetingService.searchMeetings(event, time, headcount, cost);
+        ModelAndView mav = new ModelAndView("searchResults");
+        mav.addObject("meetings", meetings);
+        return mav;
     }
 }
