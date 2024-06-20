@@ -1,6 +1,6 @@
-package com.dongduk.HealthPlanet.repository.meeting;
+package com.dongduk.HealthPlanet.repositories;
 
-import com.example.demo.entities.Meeting;
+import com.dongduk.HealthPlanet.entities.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MeetingRepository extends JpaRepository<Meeting, Long> {

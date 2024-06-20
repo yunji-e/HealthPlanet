@@ -1,4 +1,4 @@
-package com.dongduk.HealthPlanet.entities.meeting
+package com.dongduk.HealthPlanet.entities;
 
 
 import jakarta.persistence.Entity;
