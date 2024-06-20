@@ -10,20 +10,6 @@
 </head>
 
 <body>
-    <div class="FlipCardcontainer">
-        <div class="slider-container">
-            <span class="slider-leftBtn sliderBtn"></span>  
-            <div class="card-container" id="slider">
-				<div th:each="post: ${popularPreviewList}" 
-						class="card" style="cursor:pointer;"
-						onClick="location.href='@{/post/view/{post.postid}}';">
-					<h5 th:text="${post.title}">제목</h5>
-					<p th:text="${post.custid}">작성자</p>
-					<p th:text="${post.schedule}">일자</p>
-				</div>
-            </div>
-            <span class="slider-rightBtn sliderBtn"></span>
-        </div>
-    </div>
+	<div th:replace="~{popularList :: cards}">-</div>
 </body>
 </html>

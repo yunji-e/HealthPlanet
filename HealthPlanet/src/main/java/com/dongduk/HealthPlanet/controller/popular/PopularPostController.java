@@ -18,20 +18,9 @@ public class PopularPostController {
     private JpaPostPreviewDao jpaPostPreviewDao;
     
     @RequestMapping({"/popular/list"})
-    public String handleRequest(
-            @RequestParam("sort") String sort,
-            Model model) throws Exception {
-        List<Post> popularList = jpaPostPreviewDao.findPopularPreviewList(sort, 100);
-        model.addAttribute(popularList);
-        return "popularList";
-    }   
- 
-    @RequestMapping({"/popular/preview"})
-    public String handleRequest2(
-            @RequestParam("sort") String sort,
-            Model model) throws Exception {
-        List<Post> popularPreviewList = jpaPostPreviewDao.findPopularPreviewList(sort, 10);
-        model.addAttribute(popularPreviewList);
+    public String handleRequest(Model model) throws Exception {
+        List<Post> popularList = jpaPostPreviewDao.findPopularPreviewList("wish", 100);
+        model.addAttribute("popularList", popularList);
         return "popularPreviewList";
-    }
+    }   
 }
