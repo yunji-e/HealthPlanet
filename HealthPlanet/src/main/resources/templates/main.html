@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Health Planet</title>
+    <style>
+    	.title {
+    		font-size: 300%;
+    	}
+    	.subTitle { color: lightgray; }
+    </style>
+</head>
+<body>
+
+	<h2>Welcome, <span th:text="${session.username}"></span>!</h2>
+    <a href="/logout">Logout</a>
+	<!-- nav html 생성 및 삽입 필요 -->
+	
+	<div align="center" style="line-height:50%; margin: 10%;">
+		<h1 class="title">Health Planet</h1>
+		<p class="subTitle">당신의 운동 모임 서비스</p>
+	</div>
+	
+	<a href="/meetings/search">Search Meetings</a>
+	
+	<p>실시간 인기 모임</p>
+    <div th:replace="~{popularList :: cards}"></div>
+	
+	<p>전체 글 view(안만든 것 같음)</p>
+	
+</body>
+</html>
