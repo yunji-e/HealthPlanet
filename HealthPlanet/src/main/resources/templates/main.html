@@ -12,8 +12,12 @@
 <body>
 
 	<h2>Welcome, <span th:text="${session.username}"></span>!</h2>
-    <a href="/logout">Logout</a>
-    <a href="/signup">회원가입</a>
+    
+    <div class="button-container" align="center">
+        <a href="/login" class="button">로그인</a>
+        <a href="/signup" class="button">회원가입</a>
+        <a href="/logout" class="button">로그아웃</a>
+    </div>
     
 	<!-- nav html 생성 및 삽입 필요 -->
 
@@ -22,13 +26,10 @@
         <p class="subTitle">당신의 운동 모임 서비스</p>
     </div>
 
-    <div class="button-container" align="center">
-        <a href="/login" class="button">로그인</a>
-        <a href="/signup" class="button">회원가입</a>
-    </div>
-
-    <p>실시간 인기 모임</p>
-    <p>전체 글 view(안만든 것 같음)</p>
+   	<a href="/popular/list">실시간 인기 모임</a>
+    <div th:replace="~{popularList :: flipCards}">모임이 없습니다.</div>
+	
+	<p>전체 글 view(안만든 것 같음)</p>
 
 </body>
 </html>
