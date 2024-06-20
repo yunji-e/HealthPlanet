@@ -29,11 +29,17 @@ public class LoginController {
             ModelMap model,
             HttpSession session) {
 
-        if (userService.authenticate(custid, custpw)) {
-            session.setAttribute("username", custid);
-            return "redirect:/main";
-        } else {
-            model.addAttribute("error", "Invalid username or password.");
+        try {
+            
+            if (userService.authenticate(custid, custpw)) {
+                session.setAttribute("username", custid);
+                return "redirect:/main";
+            } else {
+                model.addAttribute("error", "Invalid username or password.");
+                return "login";
+            }
+        } catch (NumberFormatException e) {
+            model.addAttribute("error", "Invalid user ID format.");
             return "login";
         }
     }
@@ -41,7 +47,7 @@ public class LoginController {
     @GetMapping("/logout")
     public String handleLogout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }
 }
 
