@@ -1,3 +1,4 @@
+//로그인 기능
 package com.dongduk.HealthPlanet.controller.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
