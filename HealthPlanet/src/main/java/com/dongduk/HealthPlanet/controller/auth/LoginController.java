@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dongduk.HealthPlanet.service.UserService;
@@ -31,7 +32,7 @@ public class LoginController {
 
         if (userService.authenticate(custid, custpw)) {
             session.setAttribute("username", custid);
-            return "redirect:/main";
+            return "redirect:/";
         } else {
             model.addAttribute("error", "Invalid username or password.");
             return "login";
@@ -41,7 +42,7 @@ public class LoginController {
     @GetMapping("/logout")
     public String handleLogout(HttpSession session) {
         session.invalidate();
-        return "redirect:/login";
+        return "redirect:/";
     }
 }
 
