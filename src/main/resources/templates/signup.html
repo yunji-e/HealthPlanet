@@ -7,7 +7,7 @@
     <h2>Signup</h2>
     <form action="/signup" method="post">
         <div>
-            <label for="custid">Username:</label>
+            <label for="custid">ID:</label>
             <input type="text" id="custid" name="custid" required>
         </div>
         <div>
@@ -23,7 +23,7 @@
             <input type="text" id="phone" name="phone" required>
         </div>
         <div>
-            <button type="submit">Signup</button>
+            <button type="submit">회원가입 하기</button>
         </div>
     </form>
     <p th:text="${error}"></p>
