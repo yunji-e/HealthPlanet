@@ -24,11 +24,18 @@
         <p class="subTitle">당신의 운동 모임 서비스</p>
     </div>
 
+
+	<div align="center">
+		<a th:href="@{/meetings/register}">
+	        <button>모임 생성하기</button>
+	    </a>
+	</div>
+
     <div align="center" style="margin: 5%;">
         <a href="/popular/list">실시간 인기 모임</a>
         <div th:replace="~{postTemplete :: flipCards}"></div>
 
-        <p>전체 글 view(css 개선 필요)</p>
+        <p>전체 글</p>
         <div th:replace="~{postTemplete :: posts}"></div>
     </div>
 </body>
