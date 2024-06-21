@@ -5,10 +5,12 @@
 <title>Popular List</title>
 
 <link rel="stylesheet" th:href="@{/css/cards.css}"/>
+<link rel="stylesheet" th:href="@{/css/navigation.css}">
 
 </head>
 
 <body>
+    <div th:insert="~{/navigation :: nav}"></div>
     <div th:replace="~{postTemplete :: cards}"></div>
 </body>
 </html>
