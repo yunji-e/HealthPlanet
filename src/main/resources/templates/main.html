@@ -21,6 +21,7 @@
       <p class="subTitle">당신의 운동 모임 서비스</p>
       <br><br><br>
       <a href="/logout" th:if="${session.username}">Logout</a>
+        <a href="/myPage" th:if="${session.username}">myPage</a>
         <a href="/signup" th:unless="${session.username}">회원가입</a>
         <a href="/login" th:unless="${session.username}">로그인</a>
    </div>

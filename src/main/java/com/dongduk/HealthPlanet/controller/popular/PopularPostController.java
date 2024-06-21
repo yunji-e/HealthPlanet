@@ -31,7 +31,7 @@ public class PopularPostController {
             @RequestParam("sort") String sort,
             Model model) throws Exception {
         List<Post> popularPreviewList = jpaPostPreviewDao.findPopularPreviewList(sort, 10);
-        model.addAttribute("popularList", popularList);
+        model.addAttribute("popularList", popularPreviewList);
         return "popularPreviewList";
     }
 }
