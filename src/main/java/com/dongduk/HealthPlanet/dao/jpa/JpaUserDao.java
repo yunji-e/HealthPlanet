@@ -43,7 +43,12 @@ public class JpaUserDao implements UserDao {
     @Override
     public List<Post> findWishList(int id) throws DataAccessException {
         // 예제 구현: 필요에 따라 수정
-        return postRepository.findMeetings(1, "morning", 10, 1000);
+        TypedQuery<Post> query = em.createQuery("SELECT new com.dongduk.HealthPlanet.domain.Post(po.postid, po.title, po.schedule, po.state, c.custid) "
+                + "FROM Customer c, Post po, Wish w "
+                + "WHERE c.id = w.id AND po.postid = w.postid AND c.id = ?1 "
+                + "ORDER BY po.state ASC, po.schedule DESC", Post.class);
+        query.setParameter(1, id);
+        return query.getResultList();
     }
 
     // 내 모임 목록 조회
