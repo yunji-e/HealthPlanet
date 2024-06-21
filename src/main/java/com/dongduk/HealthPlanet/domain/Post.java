@@ -35,9 +35,10 @@ public class Post implements Serializable {
     private Date schedule;
     @Column(name="timezone")
     private String time;
-    private String place;
+    private String city;
+    private String region;
     private int headcount;
-    private int cost;
+    private String cost;
     private String body;
     @Column(name="viewcount")
     private int view;
@@ -46,7 +47,7 @@ public class Post implements Serializable {
     @Temporal(TemporalType.DATE)
     private LocalDate posted;
     private int id;
-    private int event;
+    private String event;
     @Transient
     private String custid;
     @Transient
