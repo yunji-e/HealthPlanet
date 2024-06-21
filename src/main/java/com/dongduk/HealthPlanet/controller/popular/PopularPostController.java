@@ -20,7 +20,7 @@ public class PopularPostController {
     @RequestMapping({"/popular/list"})
     public String handleRequest(Model model) throws Exception {
         List<Post> popularList = jpaPostPreviewDao.findPopularPreviewList("wish", 100);
-        model.addAttribute("popularList", popularList);
+        model.addAttribute("list", popularList);
         return "popularList";
     }   
 }
