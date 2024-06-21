@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>검색 결과</title>
+       <link rel="stylesheet" href="/css/search-result.css">
+</head>
+<body>
+<div class="container">
+    <h2>검색 결과</h2>
+
+    <!-- 검색된 모임 목록 표시 -->
+    <table>
+        <thead>
+            <tr>
+                <th>제목</th>
+                <th>날짜</th>
+                <th>시간대</th>
+                <th>종목</th>
+                <th>도시</th>
+                <th>구/군</th>
+                <th>인원수</th>
+                <th>비용</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 검색 결과를 반복문으로 출력 -->
+            <tr th:each="meeting : ${meetings}">
+                <td th:text="${meeting.title}"></td>
+                <td th:text="${meeting.schedule}"></td>
+                <td th:text="${meeting.time}"></td>
+                <td th:text="${meeting.event}"></td>
+                <td th:text="${meeting.city}"></td>
+                <td th:text="${meeting.region}"></td>
+                <td th:text="${meeting.headCount}"></td>
+                <td th:text="${meeting.cost}"></td>
+            </tr>
+            <!-- 검색 결과가 없는 경우 -->
+            <tr th:if="${#lists.isEmpty(meetings)}">
+                <td colspan="8">검색 결과가 없습니다.</td>
+            </tr>
+        </tbody>
+    </table>
+    
+   <p>
+        <a href="/" class="button">홈으로 돌아가기</a>
+    </p>
+</div>
+</body>
+</html>
