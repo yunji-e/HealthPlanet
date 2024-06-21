@@ -35,7 +35,8 @@ public class Post implements Serializable {
     private Date schedule;
     @Column(name="timezone")
     private String time;
-    private String place;
+    private String city;
+    private String region;
     private int headcount;
     private int cost;
     private String body;
