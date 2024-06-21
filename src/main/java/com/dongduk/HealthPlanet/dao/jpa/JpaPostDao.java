@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.dongduk.HealthPlanet.dao.PostDao;
 import com.dongduk.HealthPlanet.domain.Participate;
 import com.dongduk.HealthPlanet.domain.Post;
-import com.dongduk.HealthPlanet.domain.SportCategory;
 import com.dongduk.HealthPlanet.domain.Wish;
 
 import jakarta.persistence.EntityManager;
