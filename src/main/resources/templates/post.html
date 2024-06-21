@@ -2,7 +2,7 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>모임</title>
+    <title th:text="${post.title}">모임</title>
     <link rel="stylesheet" href="/css/meetingConfirm.css">
 </head>
 <body>
@@ -54,8 +54,8 @@
         </p>
     </div>
     <div class="btn">
-    	<a th:href="/addWish?id=${post.id}&postid=${post.id}">찜하기</a>
-        <a href="/meetings/register-finish">신청하기</a>
+    	<a th:href="@{/post/addWish(postid=${post.id})}">찜하기(구현중)</a>
+        <a th:href="@{/post/participate(postid=${post.id}}">신청하기(구현중)</a>
     </div>
 </div>
 </body>

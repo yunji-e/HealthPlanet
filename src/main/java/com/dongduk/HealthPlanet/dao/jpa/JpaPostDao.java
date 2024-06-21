@@ -23,19 +23,19 @@ public class JpaPostDao implements PostDao {
     
     // 모임 조회
     public Post findPost(int postid) throws DataAccessException {
-        TypedQuery<Post> query = em.createQuery("SELECT * FROM CUSTOMER JOIN POST USING(id) "
-                + "WHERE postid = ?1", Post.class);
-        query.setParameter(1, postid);
+        TypedQuery<Post> query = em.createQuery("SELECT p FROM Customer c JOIN Post p ON c.id=p.id "
+                + "WHERE p.postid = :postid", Post.class);
+        query.setParameter("postid", postid);
         Post post = (Post) query.getSingleResult();
         
-        Query query2 = em.createQuery("SELECT count(*) AS applicant FROM PARTICIPATE "
+        Query query2 = em.createQuery("SELECT count(*) AS applicant FROM Participate "
                 + "WHERE postid = ?1 AND state = 1");
         query2.setParameter(1, postid);
-        int applicant = (int) query2.getSingleResult();
+        long applicant = (long) query2.getSingleResult();
         post.setApplicant(applicant);
         
-        SportsCategory sc = em.find(SportsCategory.class, post.getEvent());
-        post.setSportname(sc.getSportname());
+//        SportsCategory sc = em.find(SportsCategory.class, post.getEvent());
+//        post.setSportname(sc.getSportname());
         
         return post;
     }

@@ -17,8 +17,8 @@
             	class="card">
                 <h5 th:text="${post.title}">제목</h5>
                 <p th:text="${post.time}">오전/오후</p>
-                <!-- <p th:text="${post.schedule}">일자</p> // 월-일만 표기되게 변경 -->
-                <p th:text="${#calendars.format(post.schedule, 'MM-dd')}">일자</p>
+                <p th:text="${post.schedule}">일자</p>
+                <!-- <p th:text="${#calendars.format(post.schedule, 'MM-dd')}">일자</p> -->
             </div>
         </div>
     </div>
@@ -34,7 +34,7 @@
             	class="card">
                 <h5 th:text="${post.title}">제목</h5>
                 <p th:text="${post.time}">오전/오후</p>
-                <p th:text="${#calendars.format(post.schedule, 'MM-dd')}">일자</p>
+                <p th:text="${post.schedule}">일자</p>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
 						th:onclick="'window.open(\'/post/view/' + ${post.postid} + '\', \'_blank\')'">
 					<h5 th:text="${post.title}">제목</h5>
 					<p th:text="${post.time}">오전/오후</p>
-					<p th:text="${#calendars.format(post.schedule, 'MM-dd')}">일자</p>
+					<p th:text="${post.schedule}">일자</p>
 				</div>
             </div>
             <span class="slider-rightBtn sliderBtn"></span>

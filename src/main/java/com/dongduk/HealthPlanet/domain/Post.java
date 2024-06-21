@@ -32,7 +32,8 @@ public class Post implements Serializable {
     generator="POST_SEQ_GENERATOR")
     private int postid;
     private String title;
-    private Date schedule;
+//    private Date schedule;
+    private String schedule;
     @Column(name="timezone")
     private String time;
     private String city;
@@ -44,8 +45,8 @@ public class Post implements Serializable {
     private int view;
     private int wish;
     private int state;
-    @Temporal(TemporalType.DATE)
-    private LocalDate posted;
+//    @Temporal(TemporalType.DATE)
+//    private LocalDate posted;
     private int id;
     private String event;
     @Transient
@@ -57,7 +58,7 @@ public class Post implements Serializable {
     
     public Post() {}
 
-    public Post(int postid, String title, Date schedule, int state, String custid) {
+    public Post(int postid, String title, String schedule, int state, String custid) {
         super();
         this.postid = postid;
         this.title = title;

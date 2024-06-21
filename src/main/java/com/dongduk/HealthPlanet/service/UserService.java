@@ -19,5 +19,9 @@ public class UserService {
         User user = userRepository.findByCustid(custid);
         return user != null && user.getCustpw().equals(custpw);
     }
+    
+    public User findUser(String custid, String custpw) {
+        return userRepository.findByCustid(custid);
+    }
 }
 
