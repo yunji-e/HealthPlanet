@@ -9,6 +9,8 @@
        }
        .subTitle { color: lightgray; }
     </style>
+    <link rel="stylesheet" th:href="@{/css/cards.css}"/>
+    <script type="text/javascript" th:src="@{/js/cards.js}"></script>
 </head>
 <body>
     
@@ -28,8 +30,8 @@
    
    <a href="/meetings/search">Search Meetings</a>
    
-   <p>실시간 인기 모임</p>
-    <div th:replace="~{popularList :: cards}"></div>
+   <a href="/popular/list">실시간 인기 모임</a>
+   <div th:replace="~{postTemplete :: flipCards}"></div>
    
    <p>전체 글 view(안만든 것 같음)</p>
    

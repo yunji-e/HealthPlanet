@@ -16,7 +16,7 @@ public class HomeController {
 //    private MeetingService meetingService;
     private JpaPostPreviewDao postPreviewDao;
 
-    @GetMapping("/")
+    @GetMapping({"/", "/main"})
     public String home(Model model) throws Exception {
         List<Post> popularList = postPreviewDao.findPopularPreviewList("wish", 10);
         model.addAttribute("popularList", popularList);

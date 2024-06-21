@@ -20,7 +20,7 @@ public class JpaPostPreviewDao implements PostPreviewDao {
     @PersistenceContext
     private EntityManager em;
 
-    private static final List<String> ALLOWED_SORT_FIELDS = Arrays.asList("view", "title", "schedule", "wish");
+    private static final List<String> ALLOWED_SORT_FIELDS = Arrays.asList("view", "wish");
 
     public List<Post> findPopularPreviewList(String sort, int count) throws Exception {
         if (!ALLOWED_SORT_FIELDS.contains(sort)) {
