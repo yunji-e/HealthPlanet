@@ -11,8 +11,8 @@
         <span th:if="${message}" th:text="${message}">Message</span>
         
         <!-- 리스트가 있는 경우 -->
-        <div th:if="${popularList}">
-            <div th:each="post : ${popularList}" style="cursor:pointer;"  
+        <div th:if="${list}">
+            <div th:each="post : ${list}" style="cursor:pointer;"  
             	th:onclick="'window.open(\'/post/view/' + ${post.postid} + '\', \'_blank\')'"
             	class="card">
                 <h5 th:text="${post.title}">제목</h5>
@@ -28,8 +28,8 @@
         <span th:if="${message}" th:text="${message}">Message</span>
         
         <!-- 포스트가 있는 경우 -->
-        <div th:if="${postList}">
-            <div th:each="post : ${postList}" style="cursor:pointer;"  
+        <div th:if="${list}">
+            <div th:each="post : ${list}" style="cursor:pointer;"  
             	th:onclick="'window.open(\'/post/view/' + ${post.postid} + '\', \'_blank\')'"
             	class="card">
                 <h5 th:text="${post.title}">제목</h5>

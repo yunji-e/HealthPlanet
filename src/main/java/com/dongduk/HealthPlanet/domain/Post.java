@@ -32,7 +32,6 @@ public class Post implements Serializable {
     generator="POST_SEQ_GENERATOR")
     private int postid;
     private String title;
-//    private Date schedule;
     private String schedule;
     @Column(name="timezone")
     private String time;
@@ -52,9 +51,9 @@ public class Post implements Serializable {
     @Transient
     private String custid;
 //    @Transient
-//    private String sportname;
+//    private Strisng sportname;
     @Transient
-    private long applicant;
+    private int applicant;
     
     public Post() {}
 

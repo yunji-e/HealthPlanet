@@ -1,0 +1,26 @@
+  .navigation {
+    height: 100px;
+    position: relative;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    align-items: center;
+    position: absolute;
+    right: 80px;
+    top: 50px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.health-planet {
+    font-size: 20px;
+    position: absolute;
+    left: 80px;
+    top: 50px;
+}

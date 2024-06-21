@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import com.dongduk.HealthPlanet.dao.PostDao;
 import com.dongduk.HealthPlanet.domain.Participate;
 import com.dongduk.HealthPlanet.domain.Post;
-import com.dongduk.HealthPlanet.domain.SportsCategory;
+import com.dongduk.HealthPlanet.domain.SportCategory;
 import com.dongduk.HealthPlanet.domain.Wish;
 
 import jakarta.persistence.EntityManager;
@@ -23,18 +23,19 @@ public class JpaPostDao implements PostDao {
     
     // 모임 조회
     public Post findPost(int postid) throws DataAccessException {
-        TypedQuery<Post> query = em.createQuery("SELECT p FROM Customer c JOIN Post p ON c.id=p.id "
-                + "WHERE p.postid = :postid", Post.class);
-        query.setParameter("postid", postid);
+        TypedQuery<Post> query = em.createQuery("SELECT p FROM Post p WHERE p.postid = ?1", Post.class);
+        query.setParameter(1, postid);
         Post post = (Post) query.getSingleResult();
         
-        Query query2 = em.createQuery("SELECT count(*) AS applicant FROM Participate "
-                + "WHERE postid = ?1 AND state = 1");
+        Query query2 = em.createQuery("SELECT count(p) AS applicant FROM Participate p "
+                + "WHERE p.postid = ?1 AND p.state = 1");
         query2.setParameter(1, postid);
-        long applicant = (long) query2.getSingleResult();
-        post.setApplicant(applicant);
+//        int applicant = (int) query2.getSingleResult();
+//        post.setApplicant(applicant);
+        Long applicant = (Long) query2.getSingleResult();
+        post.setApplicant(applicant.intValue()); // Long을 int로 변환하여 설정
         
-//        SportsCategory sc = em.find(SportsCategory.class, post.getEvent());
+//        SportCategory sc = em.find(SportCategory.class, post.getEvent());
 //        post.setSportname(sc.getSportname());
         
         return post;
@@ -43,7 +44,7 @@ public class JpaPostDao implements PostDao {
     // 모임 신청
     @Transactional
     public int participatePost(int id, int postid) throws DataAccessException {
-        Participate p = new Participate(id, postid, 1);
+        Participate p = new Participate(postid, id, 1);
         em.persist(p);
         
         Query query = em.createQuery("UPDATE POST SET state = 1 WHERE postid = ?1 "
@@ -66,23 +67,25 @@ public class JpaPostDao implements PostDao {
     }
     
     // 찜하기
+    @Transactional
     public int addWish(int id, int postid) throws DataAccessException {
         Wish wish = new Wish(id, postid);
         em.persist(wish);
         
-        Query query = em.createQuery("UPDATE POST SET wish = wish + 1 WHERE postid = ?1");
+        Query query = em.createQuery("UPDATE Post SET wish = wish + 1 WHERE postid = ?1");
         query.setParameter(1, postid);
         return query.executeUpdate();
     }
     
     // 찜 삭제
+    @Transactional
     public int deleteWish(int id, int postid) throws DataAccessException {
-        Query query = em.createQuery("DELETE FROM WISH WHERE postid = ?1 AND id = ?2");
+        Query query = em.createQuery("DELETE FROM Wish WHERE postid = ?1 AND id = ?2");
         query.setParameter(1, postid);
         query.setParameter(2, id);
         query.executeUpdate();
         
-        query = em.createQuery("UPDATE POST SET wish = wish - 1 WHERE postid = ?1 ");
+        query = em.createQuery("UPDATE Post SET wish = wish - 1 WHERE postid = ?1 ");
         query.setParameter(1, postid);
         return query.executeUpdate();
     }

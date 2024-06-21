@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/meetingView.css}">
+<link rel="stylesheet" th:href="@{/css/navigation.css}">
+<title>meetingView</title>
+</head>
+<body>
+    <div th:insert="~{/navigation :: nav}"></div>
+    <div class="div">
+        <div class="copy">
+            <div class="product-name"><span th:text="${post.title}">제목</span></div>
+            <div class="subheading">일시 : <span th:text="${post.schedule}">날짜</span></div>
+            <div class="subheading">시간대 : <span th:text="${post.time}">시간</span></div>
+            <div class="subheading">종목 : <span th:text="${post.event}">종목</span></div>
+            <div class="subheading">장소 : <span th:text="${post.city}">장소</span></div>
+            <div class="subheading">인원수 : <span th:text="${post.headcount}">인원수</span></div>
+            <div class="subheading">비용 : <span th:text="${post.cost}">비용</span></div>
+            <div class="description">설명 : <span th:text="${post.body}">설명</span></div>
+            
+            
+            <!-- user가 쓴 게시글이면 수정/삭제 버튼 표시 -->
+			<div th:if="${user.id == post.id}">
+				<a th:href="@{/myPage/updatePost(postid=${post.postid})}">
+					<button type="button" id="btn">
+						<span class="span">수정하기</span>
+					</button>
+				</a> <a th:href="@{/myPage/deletePost(postid=${post.postid})}">
+					<button type="button" id="btn2">
+						<span class="span">삭제하기</span>
+					</button>
+				</a>
+			</div>
+			<!-- user가 쓴 게시글이 아니면 찜/신청 버튼 표시 -->
+			<div th:unless="${user.id == post.id}">
+				<!-- user가 쓴 게시글이 아니면 찜/신청 버튼 표시 -->
+				<div th:unless="${user != null and user.id == post.id}">
+					<!-- user가 찜을 안 했으면 -->
+					<div th:unless="${user != null and wish != null and user.id == wish.id and post.postid == wish.postid}">
+						<a th:href="@{/post/addWish(postid=${post.postid}, userid=${user != null ? user.id : null})}">
+							<button type="button" id="btn"><span class="span">찜하기</span>
+							</button>
+						</a>
+					</div>
+					<!-- user가 찜을 했으면 -->
+					<div th:if="${user != null and wish != null and user.id == wish.id and post.postid == wish.postid}">
+						<a th:href="@{/post/deleteWish(postid=${post.postid}, userid=${user != null ? user.id : null})}">
+							<button type="button" id="btn"><span class="span">찜 취소</span>
+							</button>
+						</a>
+					</div>
+				</div>
+
+
+				<a th:href="@{/post/participate(postid=${post.postid}, userid=${user.id})}">
+					<button type="button" id="btn2"><span class="span">신청하기</span>
+					</button>
+				</a>
+			</div>
+
+		</div>
+
+        <div class="field">
+            <div class="label"><span th:text="${post.applicant}"></span> / <span th:text="${post.headcount}"></span></div>
+        </div>
+
+    </div>
+
+</body>
+</html>

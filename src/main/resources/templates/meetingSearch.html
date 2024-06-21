@@ -2,7 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/navigation.css}">
     <title>Search Meetings</title>
+    <style>
+    .title {
+        font-size: 300%;
+    }
+    .subTitle { color: lightgray; }
+    div { text-align: center; }
+    </style>
     <script>
         var cnt = new Array();
         cnt[0] = new Array('전체');
@@ -23,8 +31,15 @@
     </script>
 </head>
 <body>
-    <h2>모임 검색</h2>
-    <form action="/meetings/results" method="get" name="form">
+    <div th:insert="~{/navigation :: nav}"></div>
+    
+    <div align="center" style="margin: 5%;">
+        <h1 class="title">모임 검색</h1>
+        <p class="subTitle">조건에 맞춰 모임을 검색할 수 있다.</p>
+    </div>
+    
+    <div>
+        <form action="/meetings/results" method="get" name="form">
         <label for="meetingEvent">종목</label><br>
         <select id="meetingEvent" name="meetingEvent">
             <option value="" disabled selected>어떤 운동을 하시나요?</option>
@@ -95,5 +110,7 @@
             <span th:text="${meeting.price}">비용</span>
         </li>
     </ul>
+    </div>
+    
 </body>
 </html>

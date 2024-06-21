@@ -2,28 +2,89 @@
 <html>
 <head>
     <title>Signup</title>
+<style>
+.title {
+    font-size: 300%;
+}
+
+.subTitle {
+    color: lightgray;
+}
+
+div {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 989px;
+  height: 104px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text {
+  color: #000000;
+  text-align: left;
+  font-size: 24px;
+  font-weight: 600;
+}
+.input {
+  border-radius: 8px;
+  border-style: solid;
+  border-color: #e0e0e0;
+  border-width: 1px;
+  padding: 8px 16px 8px 16px;
+  height: 40px;
+}
+
+.health-planet {
+    font-size: 20px;
+    position: absolute;
+    left: 80px;
+    top: 50px;
+    text-decoration: none;
+    color: black;
+}
+
+button {
+    background: #000000;
+    border-radius: 8px;
+    padding: 14px 24px 14px 24px;
+}
+.btn {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 500;
+ }
+</style>
 </head>
 <body>
-    <h2>Signup</h2>
+    <a href="/" class="health-planet">Health Planet</a>
+    <div align="center" style="margin: 7%;">
+        <h1 class="title">회원가입</h1>
+        <p class="subTitle">개인정보 입력</p>
+    </div>
     <form action="/signup" method="post">
-        <div>
-            <label for="custid">ID:</label>
-            <input type="text" id="custid" name="custid" required>
+        <div class="div">
+            <label for="custid" class="text">아이디</label>
+            <input type="text" id="custid" name="custid" class="input" required>
+        </div>
+        <div class="div">
+            <label for="custpw" class="text">비밀번호</label>
+            <input type="password" id="custpw" name="custpw" class="input" required>
+        </div>
+        <div class="div">
+            <label for="custname" class="text">이름</label>
+            <input type="text" id="custname" name="custname" class="input" required>
+        </div>
+        <div class="div">
+            <label for="phone" class="text">전화번호</label>
+            <input type="text" id="phone" name="phone" class="input" required>
         </div>
         <div>
-            <label for="custpw">Password:</label>
-            <input type="password" id="custpw" name="custpw" required>
-        </div>
-        <div>
-            <label for="custname">Name:</label>
-            <input type="text" id="custname" name="custname" required>
-        </div>
-        <div>
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" required>
-        </div>
-        <div>
-            <button type="submit">회원가입 하기</button>
+            <button type="submit"><span class="btn">가입하기</span></button>
         </div>
     </form>
     <p th:text="${error}"></p>

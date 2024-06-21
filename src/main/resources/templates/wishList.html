@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/navigation.css}">
 <title>wishList</title>
     <style>
         .title {
@@ -12,10 +13,11 @@
     </style>
 </head>
 <body>
-    <div align="center" style="line-height:50%; margin: 10%;">
+    <div th:insert="~{/navigation :: nav}"></div>
+    
+    <div align="center" style="margin: 5%;">
         <h1 class="title">나의 찜 목록</h1>
         <p class="subTitle">찜한 모임 목록을 확인할 수 있다.</p>
-        <br><br><br>
     </div>
     
     <div th:insert="~{/popularList :: cards}"></div>
