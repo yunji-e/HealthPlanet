@@ -1,26 +1,15 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Popular List</title>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/popularList.js"></script>
+<link type="text/css" rel="stylesheet" href="css/popularList.css" />
+
 </head>
+
 <body>
-
-    <div th:fragment="cards">
-        <!-- 리스트가 없는 경우 -->
-        <span th:if="${message}" th:text="${message}">Message</span>
-        
-        <!-- 리스트가 있는 경우 -->
-        <div th:if="${list}">
-            <div th:each="post : ${list}" 
-            style="display: inline-block; border-radius: 5px; padding: 5px; margin: 5px; box-shadow: 2px 2px 10px 3px; cursor:pointer;"
-                 th:onclick="'location.href=\'/post/view/' + ${post.postid} + '\''">
-                <h5 th:text="${post.title}">제목</h5>
-                <p th:text="${post.custid}">작성자</p>
-                <p th:text="${post.schedule}">일자</p>
-            </div>
-        </div>
-    </div>
-
+    <div th:replace="~{postTemplete :: flipCards}"></div>
 </body>
 </html>
