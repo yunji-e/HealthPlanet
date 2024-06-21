@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/navigation.css}">
 <title>participationList</title>
     <style>
         .title {
@@ -12,12 +13,14 @@
     </style>
 </head>
 <body>
-    <div align="center" style="line-height:50%; margin: 10%;">
+    <div th:insert="~{/navigation :: nav}"></div>
+    
+    <div align="center" style="margin: 5%;">
         <h1 class="title">내가 참여한 모임</h1>
         <p class="subTitle">참여완료 또는 신청한 모임을 확인할 수 있다.</p>
         <br><br><br>
     </div>
     
-    <div th:insert="~{/popularList :: cards}"></div>
+    <div th:insert="~{/postTemplete :: cards}"></div>
 </body>
 </html>

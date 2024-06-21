@@ -1,12 +1,7 @@
-.div,
-.div * {
-  box-sizing: border-box;
-}
+
 .div {
-  background: #ffffff;
-  height: 1080px;
+  height: 800px;
   position: relative;
-  overflow: hidden;
 }
 .copy {
   padding: 0px 0px 100px 0px;
@@ -77,4 +72,6 @@
   line-height: 150%;
   white-space: nowrap;
 }
-
+.span {
+    color: #ffffff;
+}
