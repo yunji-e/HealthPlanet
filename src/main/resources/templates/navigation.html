@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  
+</head>
+<body>
+    <div th:fragment="nav">
+        <div class="navigation">
+            <div class="items">
+                <!-- 로그인 안 된 경우 -->
+                <a th:href="@{/meetings/search}" th:unless="${session.username}">검색</a>
+                <a th:href="@{/signup}" th:unless="${session.username}">회원가입</a>
+                <a th:href="@{/login}" th:unless="${session.username}">로그인</a>
+                
+                <!-- 로그인 된 경우 -->
+                <span th:if="${session.username}">Welcome, <span th:text="${session.username}"></span>!</span>
+                <a th:href="@{/meetings/search}" th:if="${session.username}">검색</a>
+                <a th:href="@{/logout}" th:if="${session.username}">로그아웃</a>
+                <a th:href="@{/myPage}" th:if="${session.username}">마이페이지</a>
+                <a th:href="@{/myPage/wishList2}" th:if="${session.username}">찜바구니</a>
+            </div>
+            <a th:href="@{/}" class="health-planet">Health Planet</a>
+        </div>
+    </div>
+</body>
+</html>
