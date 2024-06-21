@@ -11,6 +11,7 @@
     <div class="div">
         <div class="copy">
             <div class="product-name"><span th:text="${post.title}">제목</span></div>
+            <p style="font-size: 0.5em;">조회수: <span th:text="${post.view}">조회수</span> | 찜: <span th:text="${post.wish}">찜한수</span></p>
             <div class="subheading">일시 : <span th:text="${post.schedule}">날짜</span></div>
             <div class="subheading">시간대 : <span th:text="${post.time}">시간</span></div>
             <div class="subheading">종목 : <span th:text="${post.event}">종목</span></div>

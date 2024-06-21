@@ -27,7 +27,7 @@ public class ParticipatePostController {
             jpaPostDao.participatePost((int)id, postid);
             Post post = jpaPostDao.findPost(postid);
             model.addAttribute("post", post);
-            return "post";
+            return "meetingView";
         } else {
             return "login";            
         }
