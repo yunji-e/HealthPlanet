@@ -20,6 +20,7 @@ public class PostController {
             @PathVariable("postid") int postid,
             ModelMap model) throws Exception {
         Post post = jpaPostDao.findPost(postid);    
+        jpaPostDao.postViewCountUp(postid);
         model.addAttribute("post", post);
         return "post"; 
     }
