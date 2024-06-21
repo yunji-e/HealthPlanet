@@ -35,6 +35,7 @@ public class PostController {
             HttpSession session,
             ModelMap model) throws Exception {
         Post post = jpaPostDao.findPost(postid); 
+        jpaPostDao.postViewCountUp(postid);
         model.addAttribute("post", post);
         
         String custid = (String) session.getAttribute("username");

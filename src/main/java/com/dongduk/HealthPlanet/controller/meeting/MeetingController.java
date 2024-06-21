@@ -1,7 +1,7 @@
 package com.dongduk.HealthPlanet.controller.meeting;
 
 import com.dongduk.HealthPlanet.entities.Meeting;
-import  com.dongduk.HealthPlanet.repositories.MeetingRepository;
+import com.dongduk.HealthPlanet.repositories.MeetingRepository;
 
 import jakarta.transaction.Transactional;
 
