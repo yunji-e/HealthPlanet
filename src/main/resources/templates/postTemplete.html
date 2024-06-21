@@ -13,26 +13,27 @@
         <!-- 리스트가 있는 경우 -->
         <div th:if="${popularList}">
             <div th:each="post : ${popularList}" style="cursor:pointer;"  
-            	th:onclick="'location.href=\'/post/view/' + ${post.postid} + '\''"
+            	th:onclick="'window.open(\'/post/view/' + ${post.postid} + '\', \'_blank\')'"
             	class="card">
                 <h5 th:text="${post.title}">제목</h5>
-                <p th:text="${post.custid}">작성자</p>
+                <p th:text="${post.time}">오전/오후</p>
                 <p th:text="${post.schedule}">일자</p>
+                <!-- <p th:text="${#calendars.format(post.schedule, 'MM-dd')}">일자</p> -->
             </div>
         </div>
     </div>
     
     <div th:fragment="posts">
-        <!-- 리스트가 없는 경우 -->
+        <!-- 포스트가 없는 경우 -->
         <span th:if="${message}" th:text="${message}">Message</span>
         
-        <!-- 리스트가 있는 경우 -->
+        <!-- 포스트가 있는 경우 -->
         <div th:if="${postList}">
             <div th:each="post : ${postList}" style="cursor:pointer;"  
-            	th:onclick="'location.href=\'/post/view/' + ${post.postid} + '\''"
+            	th:onclick="'window.open(\'/post/view/' + ${post.postid} + '\', \'_blank\')'"
             	class="card">
                 <h5 th:text="${post.title}">제목</h5>
-                <p th:text="${post.custid}">작성자</p>
+                <p th:text="${post.time}">오전/오후</p>
                 <p th:text="${post.schedule}">일자</p>
             </div>
         </div>
@@ -45,9 +46,9 @@
             <div class="card-container" id="slider">
 				<div th:each="post: ${popularList}" 
 						class="card" style="cursor:pointer;"
-						th:onclick="'location.href=\'/post/view/' + ${post.postid} + '\''">
+						th:onclick="'window.open(\'/post/view/' + ${post.postid} + '\', \'_blank\')'">
 					<h5 th:text="${post.title}">제목</h5>
-					<p th:text="${post.custid}">작성자</p>
+					<p th:text="${post.time}">오전/오후</p>
 					<p th:text="${post.schedule}">일자</p>
 				</div>
             </div>

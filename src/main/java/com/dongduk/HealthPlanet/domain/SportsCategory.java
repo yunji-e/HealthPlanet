@@ -1,5 +1,7 @@
 package com.dongduk.HealthPlanet.domain;
 
+import java.io.Serializable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -9,7 +11,7 @@ import lombok.Setter;
 @Entity
 @Table(name="sportscategory")
 @Getter @Setter
-public class SportsCategory {
+public class SportsCategory implements Serializable {
     @Id
     private int sportid;
     private String sportname;

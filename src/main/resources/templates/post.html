@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${post.title}">모임</title>
+    <link rel="stylesheet" href="/css/meetingConfirm.css">
+</head>
+<body>
+
+<div class="container">
+    <h2 th:text="${post.title}">모임 이름</h2>
+    <div>
+        <p>
+            <span class="label">모임 날짜</span>
+            <div class="user-input">
+                <span th:text="${post.schedule}"></span>
+            </div>
+        </p>
+        <p>
+            <span class="label">시간대</span>
+            <div class="user-input">
+                <span th:text="${post.time}"></span>
+            </div>
+        </p>
+        <p>
+            <span class="label">종목</span>
+            <div class="user-input">
+                <span th:text="${post.event}"></span>
+            </div>
+        </p>
+        <p>
+            <span class="label">장소</span>
+            <div class="user-input">
+                <span th:text="${post.city} + ' ' + ${post.region}"></span>
+            </div>
+        </p>
+        <p>
+            <span class="label">인원수</span>
+            <div class="user-input">
+                <span th:text="${post.headcount}"></span>
+            </div>
+        </p>
+        <p>
+            <span class="label">비용</span>
+            <div class="user-input">
+                <span th:text="${post.cost}"></span>
+            </div>
+        </p>
+        <p>
+            <span class="label">모임 설명</span>
+            <div class="user-input">
+                <span th:text="${post.body}"></span>
+            </div>
+        </p>
+    </div>
+    <div class="btn">
+    	<a th:href="@{/post/addWish(postid=${post.id})}">찜하기(구현중)</a>
+        <a th:href="@{/post/participate(postid=${post.id}}">신청하기(구현중)</a>
+    </div>
+</div>
+</body>
+</html>

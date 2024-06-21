@@ -32,7 +32,9 @@ public class LoginController {
         try {
             
             if (userService.authenticate(custid, custpw)) {
+                int id = userService.findUser(custid, custpw).getId();
                 session.setAttribute("username", custid);
+                session.setAttribute("userid", id);
                 return "redirect:/main";
             } else {
                 model.addAttribute("error", "Invalid username or password.");

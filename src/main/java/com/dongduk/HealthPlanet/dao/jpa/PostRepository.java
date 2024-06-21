@@ -17,5 +17,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
                             @Param("time") String time, 
                             @Param("headcount") int headcount, 
                             @Param("cost") int cost);
+    
 }
 

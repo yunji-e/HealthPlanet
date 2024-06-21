@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.dongduk.HealthPlanet.dao.jpa.JpaPostDao;
 
+import jakarta.servlet.http.HttpSession;
+
 @Controller
 public class ParticipatePostController {
     
@@ -15,10 +17,16 @@ public class ParticipatePostController {
 
     @RequestMapping("/post/participate")    
     public String handleRequest(
-            @RequestParam("id") int id,
-            @RequestParam("postid") int postid) throws Exception {
-        jpaPostDao.participatePost(id, postid);    
-        return "redirect:/view"; 
+            @RequestParam("postid") int postid,
+            HttpSession session
+            ) throws Exception {
+        Object id = session.getAttribute("userid");
+        if(id != null) {
+            jpaPostDao.participatePost((int)id, postid); //해당 부분 이상한거같음
+            return "redirect:/view";
+        } else {
+            return "login";            
+        }
     }
 
 }
