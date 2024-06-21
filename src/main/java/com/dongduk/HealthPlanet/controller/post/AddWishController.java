@@ -27,6 +27,8 @@ public class AddWishController {
             jpaPostDao.addWish((int)id, postid);
             Post post = jpaPostDao.findPost(postid);
             model.addAttribute("post", post);
+            
+           
             return "post";
         } else {
             return "login";
