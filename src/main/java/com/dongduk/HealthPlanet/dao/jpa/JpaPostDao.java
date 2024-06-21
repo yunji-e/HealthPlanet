@@ -35,8 +35,8 @@ public class JpaPostDao implements PostDao {
         Long applicant = (Long) query2.getSingleResult();
         post.setApplicant(applicant.intValue()); // Long을 int로 변환하여 설정
         
-        SportCategory sc = em.find(SportCategory.class, post.getEvent());
-        post.setSportname(sc.getSportname());
+//        SportCategory sc = em.find(SportCategory.class, post.getEvent());
+//        post.setSportname(sc.getSportname());
         
         return post;
     }

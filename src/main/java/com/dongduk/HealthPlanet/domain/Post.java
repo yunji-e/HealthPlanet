@@ -50,8 +50,8 @@ public class Post implements Serializable {
     private String event;
     @Transient
     private String custid;
-    @Transient
-    private String sportname;
+//    @Transient
+//    private Strisng sportname;
     @Transient
     private int applicant;
     
