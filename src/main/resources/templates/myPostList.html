@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" th:href="@{/css/navigation.css}">
+<link rel="stylesheet" th:href="@{/css/cards.css}">
 <title>participationList</title>
     <style>
         .title {
@@ -20,6 +21,6 @@
         <p class="subTitle">작성한 모임을 확인할 수 있다.</p>
     </div>
     
-    <div th:insert="~{/popularList :: cards}"></div>
+    <div th:insert="~{/postTemplete :: cards}"></div>
 </body>
 </html>
