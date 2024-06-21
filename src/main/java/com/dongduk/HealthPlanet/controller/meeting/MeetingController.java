@@ -17,12 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/meetings")
 public class MeetingController {
 
-    private final MeetingRepository meetingRepository;
-
     @Autowired
-    public MeetingController(MeetingRepository meetingRepository) {
-        this.meetingRepository = meetingRepository;
-    }
+    private MeetingRepository meetingRepository;
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
