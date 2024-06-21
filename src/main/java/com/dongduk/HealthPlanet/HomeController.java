@@ -24,7 +24,7 @@ public class HomeController {
         List<Post> popularList = postPreviewDao.findPopularPreviewList("wish", 10);
         List<Post> postList = postDao.findAll();
         model.addAttribute("popularList", popularList);
-        model.addAttribute("postList", postList);
+        model.addAttribute("list", postList);
         return "main"; // main.html 뷰를 반환합니다.
     }
 }
