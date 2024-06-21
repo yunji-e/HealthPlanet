@@ -23,13 +23,13 @@
             
             <!-- user가 쓴 게시글이면 수정/삭제 버튼 표시 -->
 			<div th:if="${user.id == post.id}">
-				<a th:href="@{/myPage/updatePost(postid=${post.postid})}">
+				<a >
 					<button type="button" id="btn">
-						<span class="span">수정하기</span>
+						<span class="span">수정하기(미구현)</span>
 					</button>
-				</a> <a th:href="@{/myPage/deletePost(postid=${post.postid})}">
+				</a> <a >
 					<button type="button" id="btn2">
-						<span class="span">삭제하기</span>
+						<span class="span">삭제하기(미구현)</span>
 					</button>
 				</a>
 			</div>
@@ -54,8 +54,8 @@
 				</div>
 
 
-				<a th:href="@{/post/participate(postid=${post.postid}, userid=${user.id})}">
-					<button type="button" id="btn2"><span class="span">신청하기</span>
+				<a>
+					<button type="button" id="btn2"><span class="span">신청하기(미구현)</span>
 					</button>
 				</a>
 			</div>
