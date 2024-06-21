@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Post List</title>
+
+<link rel="stylesheet" th:href="@{/css/cards.css}"/>
+<style type="text/css">
+    .card {
+        display: inline-block;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        box-shadow: 2px 2px 10px 3px;
+    }
+</style>
+
+</head>
+
+<body>
+    <div th:replace="~{postTemplete :: cards}"></div>
+</body>
+</html>
